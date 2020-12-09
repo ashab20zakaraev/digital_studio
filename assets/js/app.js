@@ -6,6 +6,8 @@ $(function(){
     
     // Header Fixed
     
+    checkScroll(scrollOffset);
+    
     $(window).on('scroll', function(){
        
         scrollOffset = $(this).scrollTop();
