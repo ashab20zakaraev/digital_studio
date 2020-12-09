@@ -1,75 +1,52 @@
-var introH = document.getElementById('intro').offsetHeight;
-var header = document.getElementById('header');
-const listener = document.querySelectorAll('a[data-scroll]');
-var scrollOffset = 0;
+$(function(){
 
-// Header Fixed
-
-window.addEventListener('scroll', function(){
-    scrollOffset = window.scrollY;
+    var introH = $("#intro").innerHeight(),
+        header = $("#header"),
+        scrollOffset = $(window).scrollTop();
     
-    if ( scrollOffset >= introH ) {
-        header.classList.add('fixed');
-    } else {
-        header.classList.remove('fixed');
-    }
-});
-
-// Smooth Scroll
-
-for ( let search of listener ) {
+    // Header Fixed
     
-    search.addEventListener('click', function(e){
-        e.preventDefault();
+    $(window).on('scroll', function(){
+       
+        scrollOffset = $(this).scrollTop();
         
-        const blockId = search.getAttribute('data-scroll');
-        
-        document.querySelector(blockId).scrollIntoView({
-            behavior : "smooth",
-            block : "start"
-        });
-        
-        menuNav.classList.remove('active');
-        nav.classList.remove('active');
+        checkScroll(scrollOffset);
         
     });
-};
-
-// Nav Toggle
-
-let nav = document.getElementById('nav');
-let menuNav = document.getElementById('menu__btn');
-
-menuNav.addEventListener('click', function(e){
-    e.preventDefault();
     
-    menuNav.classList.toggle('active');
-    nav.classList.toggle('active');
+    function checkScroll(scrollOffset) {
+        
+        if( scrollOffset >= introH / 2 ) {
+            header.addClass('fixed');
+        } else {
+            header.removeClass('fixed');
+        }
+    }
     
+    // Smooth Scroll
+
+    $("[data-scroll]").on("click", function(event) {
+        event.preventDefault();
+        
+        var blockId = $(this).data('scroll'),
+            blockOffset = $(blockId).offset().top;
+        
+        $("html, body").animate({
+            scrollTop : blockOffset 
+        }, 700);
+        
+        $("#menu__btn").removeClass('active');
+        $("#nav").removeClass('active');
+        
+    });
+    
+    // Nav Toggle
+    
+    $("#menu__btn").on('click', function(event){
+       event.preventDefault();
+        
+        $(this).toggleClass('active');
+        $("#nav").toggleClass('active');
+        
+    });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
