@@ -191,7 +191,7 @@ a {
     height: 40px;
     
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all .5s ease-in-out;
     
     display: none;
 }
@@ -214,7 +214,7 @@ a {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255,101,47,.2);
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .menu__btn-burger:before {
@@ -630,6 +630,10 @@ a {
         width: 0;
     }
     
+    .nav__link:hover:before {
+        width: 0;
+    }
+    
     .menu__btn {
         display: block;
     }
@@ -725,33 +729,6 @@ a {
         text-align: center;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
