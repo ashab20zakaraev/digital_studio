@@ -24,7 +24,7 @@ $(function(){
     
     function checkScroll(scrollOffset) {
         
-        if( scrollOffset >= introH) {
+        if( scrollOffset >= introH - 10 ) {
             header.addClass('fixed');
         } else {
             header.removeClass('fixed');
